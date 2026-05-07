@@ -24,7 +24,10 @@ app.use(cors());
 
   app.use(express.json());
   app.use(cors({
-  origin: "https://friendly-cranachan-2fbc8b.netlify.app"
+   origin: [
+      "http://localhost:3000",
+      "https://friendly-cranachan-2fbc8b.netlify.app"
+    ],
 }));
   // Health check
   app.get("/api/health", (req, res) => {
