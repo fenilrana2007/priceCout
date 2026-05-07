@@ -72,7 +72,10 @@ export default function App() {
     }, 50);
 
     try {
-      const response = await axios.get(`https://pricecout.onrender.com?q=${encodeURIComponent(searchTerm)}`);
+      // const response = await axios.get(`https://pricecout.onrender.com?q=${encodeURIComponent(searchTerm)}`);
+      const response = await axios.get(
+      `https://pricecout.onrender.com/api/search?q=${encodeURIComponent(searchTerm)}`
+      );
       setResults(response.data.results);
       if (response.data.results.length === 0) {
         setError('No sales listings found for this product. We filtered out rental results.');
@@ -138,7 +141,7 @@ export default function App() {
       />
 
       {/* Mobile-style Notification Toast System - Centered Top */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-3 w-full max-w-sm px-4">
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-100 flex flex-col gap-3 w-full max-w-sm px-4">
         <AnimatePresence>
           {notifications.map(n => (
             <motion.div
@@ -199,7 +202,7 @@ export default function App() {
                 <input 
                   type="text" 
                   placeholder="What's on your list?"
-                  className="w-full h-14 md:h-20 pl-12 md:pl-16 pr-32 md:pr-40 bg-slate-100 border-2 border-transparent focus:border-blue-600 focus:bg-white rounded-[20px] md:rounded-[24px] text-base md:text-xl font-black outline-none transition-all shadow-sm"
+                  className="w-full h-14 md:h-20 pl-12 md:pl-16 pr-32 md:pr-40 bg-slate-100 border-2 border-transparent focus:border-blue-600 focus:bg-white rounded-[20px] md:rounded-3xl text-base md:text-xl font-black outline-none transition-all shadow-sm"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSearch(query)}
@@ -287,10 +290,10 @@ export default function App() {
                      <AnimatePresence>
                        {activeDropdown === 'store' && (
                          <>
-                           <div className="fixed inset-0 z-[60]" onClick={() => setActiveDropdown(null)} />
+                           <div className="fixed inset-0 z-60" onClick={() => setActiveDropdown(null)} />
                            <motion.div 
                              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                             className="absolute top-full left-0 mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-2xl z-[70] py-2 max-h-64 overflow-y-auto custom-scrollbar"
+                             className="absolute top-full left-0 mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-2xl z-70 py-2 max-h-64 overflow-y-auto custom-scrollbar"
                            >
                              {uniqueRetailersList.map(store => (
                                <button 
@@ -329,10 +332,10 @@ export default function App() {
                      <AnimatePresence>
                        {activeDropdown === 'sort' && (
                          <>
-                           <div className="fixed inset-0 z-[60]" onClick={() => setActiveDropdown(null)} />
+                           <div className="fixed inset-0 z-60" onClick={() => setActiveDropdown(null)} />
                            <motion.div 
                              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                             className="absolute top-full left-0 mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-2xl z-[70] py-2"
+                             className="absolute top-full left-0 mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-2xl z-70 py-2"
                            >
                               {[
                                 { id: 'best_deal', label: 'Recommended', icon: Sparkles },

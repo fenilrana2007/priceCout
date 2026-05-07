@@ -1,10 +1,11 @@
 import express from "express";
+import cors  from "cors";
+
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
 import axios from "axios";
 import dotenv from "dotenv";
-
 dotenv.config();
 console.log("Server script starting...");
 
@@ -14,7 +15,7 @@ const __dirname = path.dirname(__filename);
 async function startServer() {
   const app = express();
   const PORT = 3000;
-
+app.use(cors());
   // Global logger to catch EVERYTHING
   app.use((req, res, next) => {
     console.log(`[REQUEST] ${new Date().toISOString()} - ${req.method} ${req.url}`);
@@ -22,7 +23,9 @@ async function startServer() {
   });
 
   app.use(express.json());
-
+  app.use(cors({
+  origin: "https://friendly-cranachan-2fbc8b.netlify.app"
+}));
   // Health check
   app.get("/api/health", (req, res) => {
     console.log("[HEALTH_CHECK] Responding with OK");
