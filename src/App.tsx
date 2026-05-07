@@ -72,7 +72,7 @@ export default function App() {
     }, 50);
 
     try {
-      const response = await axios.get(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+      const response = await axios.get(`https://pricecout.onrender.com?q=${encodeURIComponent(searchTerm)}`);
       setResults(response.data.results);
       if (response.data.results.length === 0) {
         setError('No sales listings found for this product. We filtered out rental results.');
