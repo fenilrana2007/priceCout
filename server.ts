@@ -28,6 +28,8 @@ app.use(cors());
       "http://localhost:3000",
       "https://price-out.netlify.app"
     ],
+     methods: ["GET", "POST", "OPTIONS"],
+    credentials: true
 }));
   // Health check
   app.get("/api/health", (req, res) => {
@@ -183,6 +185,7 @@ app.use(cors());
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
+  
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running at http://localhost:${PORT}`);
