@@ -26,7 +26,7 @@ app.use(cors());
   app.use(cors({
    origin: [
       "http://localhost:3000",
-      "https://friendly-cranachan-2fbc8b.netlify.app"
+      "https://price-out.netlify.app"
     ],
 }));
   // Health check
