@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">priseOut</string>
+    <string name="title_activity_main">priseOut</string>
+    <string name="package_name">com.priseOut.app</string>
+    <string name="custom_url_scheme">com.priseOut.app</string>
+</resources>
